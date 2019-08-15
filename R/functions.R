@@ -32,7 +32,7 @@ buildNetwork <- function(df, id, node.column, time.column, nodes.list,
   if (parallel) {
     cl <- parallel::makeCluster(num.cores)
     parallel::clusterExport(cl, c("df", "id", "node.column", "time.column", "nodes.list",
-                                  "lbar", "R_A", "gamma", "calcNetworkForIndividual"), envir=environment())
+                                  "lbar", "R_A", "gamma", ".calcNetworkForIndividual"), envir=environment())
 
     parallel::clusterEvalQ(cl, library(dplyr))
 
