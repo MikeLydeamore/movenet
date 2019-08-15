@@ -223,6 +223,6 @@ calcNumberOfTransfers <- function(df, id, node.column, time.column, entry.column
   time.column <- enquo(time.column)
   entry.column <- enquo(entry.column)
 
-  number_of_changes <- df %>% group_by(!!id) %>% filter((!!entry.column) == entry.code) %%> filter((!!time.column) == 0 | is.na(!!time.column)) %>%
+  number_of_changes <- df %>% group_by(!!id) %>% filter((!!entry.column) == entry.code) %>% filter((!!time.column) == 0 | is.na(!!time.column)) %>%
     count() %>% mutate(n=n-1) %>% ungroup() %>% group_by(n)
 }
