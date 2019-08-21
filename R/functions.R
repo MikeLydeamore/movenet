@@ -30,7 +30,7 @@
 buildNetwork <- function(df, id, node.column, time.column, exit.column, exit.code, visit.column, nodes.list,
                          R_A, gamma,
                          parallel = F, num.cores = parallel::detectCores()-1) {
-  if (any(class(dt) != "data.table"))
+  if (any(class(df) != "data.table"))
     stop("Input df must be a data.table")
 
   if (parallel)
