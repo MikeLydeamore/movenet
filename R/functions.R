@@ -120,8 +120,7 @@ calcStayLengths <- function(df, id, node.column, time.column, entry.column, entr
   stay_lengths <- df[get(entry.column) == entry.code]
 
   if (order) {
-    order <- stay_lengths[, .(mean_time=mean(get(time.column), na.rm=T)), by=node.column][order(mean_time), get(node.column)]
-    print(order)
+    order <- stay_lengths[, list(mean_time=mean(get(time.column), na.rm=T)), by=node.column][order(mean_time), get(node.column)]
     stay_lengths <- stay_lengths[, eval(node.column):=factor(get(node.column), levels = order)]
   }
 
